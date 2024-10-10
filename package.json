@@ -1,0 +1,13 @@
+{
+  "name": "chat_app",
+  "version": "1.0.0",
+  "description": "### this is a realtime chat application implementd with MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev" : "nodemon backend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
