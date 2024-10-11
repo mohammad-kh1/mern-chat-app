@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import User from '../models/User.js';
+import User from '../models/user.model.js';
 
 const protectedRoute = async(req, res, next) => {
     try {
@@ -14,8 +14,7 @@ const protectedRoute = async(req, res, next) => {
         if(!decodedToken){
             return res.status(401).json({ message: "unauthorized access" });
         }
-
-        const user = await User.findById(decodedToken.id).select("-password");
+        const user = await User.findById(decodedToken.userId).select("-password");
         if(!user){
             return res.status(401).json({ message: "User NotFound" });
         }
