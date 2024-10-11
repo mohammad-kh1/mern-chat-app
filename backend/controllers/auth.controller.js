@@ -4,7 +4,26 @@ import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const loginUser = async (req , res) => {
+    try {
+        const {username , password} = req.body;
+        const user = await User.findOne({ username });
+        const isMatch = await bcrypt.compare(password, user?.password || "");
+        if(!isMatch){
+            return res.status(400).json({ message: "Invalid credentials!" });
+        }
 
+        generateTokenAndSetCookie(user._id, res);
+
+        return res.status(200).json({ message: "Logged in successfully!" , user:{
+            fullName: user.fullName,
+            username: user.username,
+            profilePic: user.profilePic
+        } });
+
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({ message: "Server error!" });
+    }
 }
 
 export const registerUser = async (req , res) => {
@@ -62,6 +81,10 @@ export const registerUser = async (req , res) => {
 }
 
 export const logoutUser = (req , res) => {
-    // Code to handle logout logic goes here
-    res.status(200).json({ message: "User logged out successfully!" });
+    try {
+        res.cookie("token" , "" , { expires: new Date(0) ,maxAge: 0 }).json({message: "Logged out successfully!"  }).status(200);
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({ message: "Server error!" });
+    }
 }

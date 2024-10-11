@@ -5,8 +5,8 @@ import { loginUser, registerUser, logoutUser } from "../controllers/auth.control
 
 const Router = express.Router();
 
-Router.get("/login" , loginUser);
+Router.post("/login" , loginUser);
 Router.post("/register" , registerUser);
-Router.get("/logout" , logoutUser);
+Router.post("/logout" , logoutUser);
 
 export default Router;
