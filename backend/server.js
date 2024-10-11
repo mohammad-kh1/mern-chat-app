@@ -3,7 +3,11 @@ import dotenv from "dotenv";
 
 // Routes
 import authRoutes from "./routes/auth.routes.js";
+import messageRoutes from "./routes/message.routes.js";
+
+// DB
 import connectToMongoDB from "./db/connectToMongoDB.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -13,9 +17,10 @@ const PORT = process.env.PORT || 5001;
 
 // Middlewares
 app.use(express.json()) // Parse JSON request bodies
+app.use(cookieParser()) // Parse cookies
 
 app.use("/API/auth" , authRoutes); // Auth Routes
-
+app.use("/API/messages" , messageRoutes); // Messages Routes
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
