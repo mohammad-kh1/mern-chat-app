@@ -1,6 +1,7 @@
 backend/node_modules
 .vscode/
 .env
+
 WiredTiger
 WiredTiger.lock
 WiredTiger.turtle
@@ -17,3 +18,5 @@ index-6--3591742397745247833.wt
 mongod.lock
 sizeStorer.wt
 storage.bson
+diagnostic.data/
+journal/
