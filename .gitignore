@@ -1,6 +1,6 @@
 backend/node_modules
 .vscode/
-
+.env
 WiredTiger
 WiredTiger.lock
 WiredTiger.turtle
