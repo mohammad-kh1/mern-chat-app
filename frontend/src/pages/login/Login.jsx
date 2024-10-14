@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto '>
         <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
@@ -13,15 +15,15 @@ const Login = () => {
                     <label className='label p-2'>
                         <span className='text-base label-text'>Username</span>
                     </label>
-                    <input type="text" name="" className='w-full input input-bordered h-10' placeholder='Enter username' id="" />
+                    <input type="text" name="" className='w-full input input-bordered h-10' placeholder='Enter username'   />
                 </div>
                 <div>
                     <label className='label p-2'>
                         <span className='text-base label-text'>Password</span>
                     </label>
-                    <input type="password" name="" className='w-full input input-bordered h-10' placeholder='Enter password' id="" />
+                    <input type="password" name="" className='w-full input input-bordered h-10' placeholder='Enter password'   />
                 </div>
-                <a href="#" className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block' >
+                <a onClick={()=>{navigate("/signup")}} className='text-sm cursor-pointer hover:underline hover:text-blue-600 mt-2 inline-block' >
                     {"Don't have an account? Sign up"}
                 </a>
                 <div>
