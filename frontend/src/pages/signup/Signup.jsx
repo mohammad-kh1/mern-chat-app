@@ -64,7 +64,9 @@ const Signup = () => {
                     {"Already have an account? Sign in"}
                 </a>
                 <div>
-                    <button type='submit' className='btn btn-block btn-sm mt-2'>Signup</button>
+                    <button type='submit' className='btn btn-block btn-sm mt-2' disabled={loading}>
+                        {loading ? <span className='loading loading-spinner'></span> : "Sign Up" }
+                    </button>
                 </div>
             </form>
         </div>

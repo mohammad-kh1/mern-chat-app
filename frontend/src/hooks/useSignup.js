@@ -23,12 +23,13 @@ const useSignup = () => {
         const data = await res.json();
         if(data.message === "User created successfully!"){
             toast.success('Signup successful');
+            localStorage.setItem('chatUser', JSON.stringify(data.user));
+            setAuthUser(data);
         }
         if(data.message === "Username already exists!"){
             toast.error('Username already exists');
         }
-        localStorage.setItem('chatUser', JSON.stringify(data));
-        setAuthUser(data);
+
 
     } catch (error) {
         toast.error('Failed to signup');
