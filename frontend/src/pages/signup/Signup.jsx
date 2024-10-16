@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import GenderCheckbox from './GenderCheckbox'
 import { useNavigate } from 'react-router-dom'
+import useSignup from '../../hooks/useSignup';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -12,9 +13,12 @@ const Signup = () => {
         gender: '',
     });
 
-    const handleSubmit = (e) => {
+    const {loading , signup} = useSignup();
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(inputs)
+        await signup(inputs);
+
     }
 
     const handleCheckboxChange = (gender) => {
@@ -60,7 +64,7 @@ const Signup = () => {
                     {"Already have an account? Sign in"}
                 </a>
                 <div>
-                    <button className='btn btn-block btn-sm mt-2'>Signup</button>
+                    <button type='submit' className='btn btn-block btn-sm mt-2'>Signup</button>
                 </div>
             </form>
         </div>

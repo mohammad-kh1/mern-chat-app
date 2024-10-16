@@ -52,7 +52,7 @@ export const registerUser = async (req , res) => {
             username,
             password: hashedPassword,
             gender,
-            profilePic: gender === "Male"? boyPofilePic : girlPofilePic
+            profilePic: gender === "male"? boyPofilePic : girlPofilePic
         });
 
         if(newUser){
