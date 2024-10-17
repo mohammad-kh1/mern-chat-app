@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Messages from './messageContainer/Messages';
 import MessageInput from './messageContainer/MessageInput';
 import { TiMessage } from 'react-icons/ti';
+import useConversation from '../../store/useConversation';
 
 const NoChatSelected = () => (
   <div className='flex items-center justify-center w-full h-full'>
@@ -14,14 +15,18 @@ const NoChatSelected = () => (
 );
 
 function MessageContainer() {
-  const noChatSelected = true;
+  const {selectedConversation  , setSelectedConversation} = useConversation();
+
+  useEffect(()=>{
+    return ()=> setSelectedConversation(null); // Unselect chat when component unmounts to prevent memory leaks
+  },[setSelectedConversation])
   return (
     <div className='md:min-w-[450px] flex flex-col'>
-      {noChatSelected ? <NoChatSelected /> : (
+      {!selectedConversation ? (<NoChatSelected /> ) : (
         <>
           {/* HEADER */}
           <div className='bg-slate-500 px-4 py-2 mb-2'>
-            <span className='label-text'>To : </span><span className='text-gray-900 font-bold'>Jhon</span>
+            <span className='label-text'>To : </span><span className='text-gray-900 font-bold'>{selectedConversation.fullName}</span>
           </div>
           <Messages />
           <MessageInput />

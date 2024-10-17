@@ -1,6 +1,6 @@
 import React from 'react'
-import Conversation from './Conversation'
 import useGetConversations from '../../hooks/useGetConversations'
+import Conversation from './Conversation';
 
 const Conversations = () => {
   const {loading, conversations } = useGetConversations();
@@ -13,8 +13,6 @@ const Conversations = () => {
     ))}
 
     {loading ? <span className='loading loading-spinner mx-auto'></span> : null}
-
-      <Conversation />
 
     </div>
   )
