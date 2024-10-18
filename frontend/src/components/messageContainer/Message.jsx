@@ -11,7 +11,6 @@ const Message = ({message}) => {
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profilePic = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
   const bubbleBgColor = fromMe ? 'bg-blue-500' : 'bg-gray-500';
-  console.log(authUser , message)
   return (
     <div className={`chat ${chatClassName} `}>
         <div className='chat-image avatar'>
